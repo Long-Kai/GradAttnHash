@@ -1,6 +1,6 @@
 # Gradient Attention Hashing
 
-This is the source code for paper "Accelerate Learning of Deep HashingWith Gradient Attention" (ICCV 2019)
+This is the source code for paper "Accelerate Learning of Deep Hashing With Gradient Attention" (ICCV 2019)
 
 The code is implemented on PyTorch Version 0.4.1
 
