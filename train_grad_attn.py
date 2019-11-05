@@ -38,13 +38,14 @@ def train(config):
     attn_net = autocuda(AttnNet(hidden_size=100))
     attnnet_optimizer = optim.Adam(attn_net.parameters(), lr=config["attn_lr"])
 
-    # torch.save(net.hash_layer.state_dict(), os.path.join("../saved_model/init/", "hash_layer64".format("model")))
-    # torch.save(attn_net.state_dict(), os.path.join("../saved_model/init/", "attn".format("model")))
+    # torch.save(net.hash_layer.state_dict(), os.path.join("./saved_model/init/", "hash_layer64".format("model")))
+    # torch.save(net.hash_layer.state_dict(), os.path.join("./saved_model/init/", "hash_layer64".format("model")))
+    # torch.save(attn_net.state_dict(), os.path.join("./saved_model/init/", "attn".format("model")))
 
-    hash_layer_dict = torch.load(os.path.join("../saved_model/init/", ("hash_layer"
+    hash_layer_dict = torch.load(os.path.join("./saved_model/init/", ("hash_layer"
                                                                        + str(config["num_bits"])).format("model"))
                                  , map_location=lambda storage, loc: storage)
-    attn_net_dict = torch.load(os.path.join("../saved_model/init/", "attn".format("model")),
+    attn_net_dict = torch.load(os.path.join("./saved_model/init/", "attn".format("model")),
                                map_location=lambda storage, loc: storage)
 
     load_dict(net.hash_layer, hash_layer_dict)

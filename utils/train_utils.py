@@ -82,11 +82,11 @@ def get_common_config(ds):
     if config["dataset"] == "nuswide":
         positive_weight = 5
         top_return = 5000
-        config["data"] = {"train_set": {"list_path": "../data/nuswide_81/train.txt",
+        config["data"] = {"train_set": {"list_path": "./data/nuswide_81/train.txt",
                                         "batch_size": batch_size, "dataset": config["dataset"]},
-                          "db_set": {"list_path": "../data/nuswide_81/database.txt",
+                          "db_set": {"list_path": "./data/nuswide_81/database.txt",
                                      "batch_size": batch_size, "dataset": config["dataset"]},
-                          "query_set": {"list_path": "../data/nuswide_81/test.txt",
+                          "query_set": {"list_path": "./data/nuswide_81/test.txt",
                                         "batch_size": batch_size, "dataset": config["dataset"]}}
         config["test_10crop"] = True
         config["optimizer"] = {"type": "SGD", "optim_params": {"lr": 1.0, "momentum": 0.9,
@@ -98,11 +98,11 @@ def get_common_config(ds):
     elif config["dataset"] == "imagenet":
         positive_weight = 100
         top_return = 1000
-        config["data"] = {"train_set": {"list_path": "../data/imagenet/train.txt",
+        config["data"] = {"train_set": {"list_path": "./data/imagenet/train.txt",
                                         "batch_size": batch_size, "dataset": config["dataset"]},
-                          "db_set": {"list_path": "../data/imagenet/database.txt",
+                          "db_set": {"list_path": "./data/imagenet/database.txt",
                                      "batch_size": batch_size, "dataset": config["dataset"]},
-                          "query_set": {"list_path": "../data/imagenet/test.txt",
+                          "query_set": {"list_path": "./data/imagenet/test.txt",
                                         "batch_size": batch_size, "dataset": config["dataset"]}}
         config["test_10crop"] = True
         config["optimizer"] = {"type": "SGD", "optim_params": {"lr": 1.0, "momentum": 0.9,
@@ -114,11 +114,11 @@ def get_common_config(ds):
     elif config["dataset"] == "cifar":
         positive_weight = 10
         top_return = 5000
-        config["data"] = {"train_set": {"list_path": "../data/cifar/train.txt",
+        config["data"] = {"train_set": {"list_path": "./data/cifar/train.txt",
                                         "batch_size": batch_size, "dataset": config["dataset"]},
-                          "db_set": {"list_path": "../data/cifar/database.txt",
+                          "db_set": {"list_path": "./data/cifar/database.txt",
                                      "batch_size": batch_size, "dataset": config["dataset"]},
-                          "query_set": {"list_path": "../data/cifar/test.txt",
+                          "query_set": {"list_path": "./data/cifar/test.txt",
                                         "batch_size": batch_size, "dataset": config["dataset"]}}
         config["test_10crop"] = False
         config["optimizer"] = {"type": "SGD", "optim_params": {"lr": 1.0, "momentum": 0.9,
