@@ -133,12 +133,11 @@ def train(config):
             running_attn_loss += attn_loss.item()
             if (i + j) % test_period == (test_period - 1):
 
-                m_a_p_lkup, recall_lkup, m_a_p_top, recall_top = run_test(query_loader, db_loader, net.eval(),
-                                                                          autocuda, test_10crop=config["test_10crop"],
+                m_a_p= run_test(query_loader, db_loader, net.eval(),autocuda, test_10crop=config["test_10crop"],
                                                                           num_query=1000,
                                                                           num_top_return=config["test"]["top_return"])
-                print('[%d, %5d] loss: %.3f; loss: %.3f; MAP: %.4f; recall: %.3f' %
-                      (epoch + 1, i + 1, running_loss / test_period, running_attn_loss / test_period, m_a_p_top, recall_top))
+                print('[%d, %5d] loss: %.3f; loss: %.3f; MAP: %.4f' %
+                      (epoch + 1, i + 1, running_loss / test_period, running_attn_loss / test_period, m_a_p))
 
                 if config["save_model"]:
                     torch.save(net.state_dict(), os.path.join(config["output_path"], "alexnet".format("model")))

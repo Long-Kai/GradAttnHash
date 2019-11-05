@@ -36,4 +36,5 @@ tr_config["save_model"] = False
 
 # print(tr_config)
 
+print("Training starts")
 train(tr_config)

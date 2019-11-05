@@ -74,29 +74,26 @@ def binarized(feats):
     return code
 
 
-def mean_average_precision(db_code, db_labels, query_code, query_labels, R=10):
+def mean_average_precision(db_code, db_labels, query_code, query_labels, R=1000):
 
     query_num = query_code.shape[0]
 
     sim = np.dot(db_code, query_code.T)
     ids = np.argsort(-sim, axis=0)
     APx = []
-    Recallx = []
 
     for i in range(query_num):
         label = query_labels[i, :]
         label[label == 0] = -1
         idx = ids[:, i]
-        pos_num = np.sum(np.sum(db_labels == label, axis=1) > 0)
         imatch = np.sum(db_labels[idx[0:R], :] == label, axis=1) > 0
         relevant_num = np.sum(imatch)
         Lx = np.cumsum(imatch)
         Px = Lx.astype(float) / np.arange(1, R + 1, 1)
         if relevant_num != 0:
             APx.append(np.sum(Px * imatch) / relevant_num)
-            Recallx.append(relevant_num / pos_num)
 
-    return 0, 0, np.mean(np.array(APx)), np.mean(np.array(Recallx))
+    return np.mean(np.array(APx))
 
 
 
