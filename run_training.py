@@ -40,7 +40,8 @@ if tr_config["save_model"]:
     if not os.path.exists(tr_config["output_path"]):
         os.mkdir(tr_config["output_path"])
 
-# print(tr_config)
 
+print(tr_config)
 print("Training starts")
+
 train(tr_config)
