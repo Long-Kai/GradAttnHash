@@ -3,7 +3,7 @@ from utils.misc import GPU
 from utils.train_utils import get_common_config
 from train_grad_attn import train
 
-# config
+# ============= config =============
 
 gpu_id = 0
 if gpu_id is None:
@@ -40,6 +40,8 @@ if tr_config["save_model"]:
     if not os.path.exists(tr_config["output_path"]):
         os.mkdir(tr_config["output_path"])
 
+
+# ============= run training =============
 
 print(tr_config)
 print("Training starts")
