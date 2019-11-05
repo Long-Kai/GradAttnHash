@@ -133,9 +133,12 @@ def train(config):
             running_attn_loss += attn_loss.item()
             if (i + j) % test_period == (test_period - 1):
 
+                # quickly test the mAP by using only 1000 query instances. For evaluation, num_query should set as None.
                 m_a_p= run_test(query_loader, db_loader, net.eval(),autocuda, test_10crop=config["test_10crop"],
                                                                           num_query=1000,
                                                                           num_top_return=config["test"]["top_return"])
+
+
                 print('[%d, %5d] loss: %.3f; loss: %.3f; MAP: %.4f' %
                       (epoch + 1, i + 1, running_loss / test_period, running_attn_loss / test_period, m_a_p))
 

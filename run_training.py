@@ -1,3 +1,4 @@
+import os
 from utils.misc import GPU
 from utils.train_utils import get_common_config
 from train_grad_attn import train
@@ -28,11 +29,16 @@ tr_config["autocuda"] = gpu.autocuda
 # nuswide: 0.3, 0.001, 0.1
 # imagenet: 0.15, 0.001, 0.08
 
-tr_config["loss"]["sigmoid_param"] = 0.15
-tr_config["optimizer"]["lr_param"]["init_lr"] = 0.001
-tr_config["attn_lr"] = 0.08
+tr_config["loss"]["sigmoid_param"] = 0.15   # \gamma in eq (8)
+tr_config["optimizer"]["lr_param"]["init_lr"] = 0.001   # learning rate of original hash network
+tr_config["attn_lr"] = 0.08    # learning rate of grad attn net
 
 tr_config["save_model"] = False
+if tr_config["save_model"]:
+    tr_config["output_path"] = "./saved_model/" + tr_config["dataset"] + "_" + str(
+        tr_config["num_bits"]) + "bit_GradAttnHash"
+    if not os.path.exists(tr_config["output_path"]):
+        os.mkdir(tr_config["output_path"])
 
 # print(tr_config)
 
