@@ -19,8 +19,8 @@ If you use this code for your research, please consider cite the paper:
       
 ## Datasets
 
-The datasets used in experiments are CIFAR-10, Imagenet and NUSWIDE-81. 
-To run the code, it needs to download the images of the datasets and decompress them into corresponding folds in [./data](/data).
+The datasets used in experiments are CIFAR-10, ImageNet and NUSWIDE-81. 
+To run the code, it needs to download the images of these datasets and decompress them into corresponding folds in [./data](/data).
 
 ## Training
 
@@ -28,6 +28,6 @@ Run [./run_training.py](/run_training.py) to start training.
 
 The training parameters can be configured in [./run_training.py](/run_training.py) 
 
-To save the model for evalution, change  `tr_config["save_model"] = False` to `True`.
+To save the model for evaluation, change  `tr_config["save_model"] = False` to `True`.
 
 
