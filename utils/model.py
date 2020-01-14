@@ -52,7 +52,6 @@ class MyAlexNet(nn.Module):
             nn.Linear(4096, 4096),
             nn.ReLU(inplace=True),
         )
-        self.feature_layers = nn.Sequential(self.features, self.classifier)
         self.hash_layer = nn.Linear(4096, num_bits)
 
     def forward(self, x):
@@ -66,9 +65,9 @@ class MyAlexNet(nn.Module):
         self.classifier[0].clear_mask()
         self.classifier[3].clear_mask()
 
-    def print_dropout_mask(self):
-        print(self.classifier[0].mask)
-        print(self.classifier[3].mask)
+#     def print_dropout_mask(self):
+#         print(self.classifier[0].mask)
+#         print(self.classifier[3].mask)
 
 
 class AlexNet(nn.Module):
@@ -98,14 +97,12 @@ class AlexNet(nn.Module):
             nn.Linear(4096, 4096),
             nn.ReLU(inplace=True),
         )
-        self.feature_layers = nn.Sequential(self.features, self.classifier)
         self.hash_layer = nn.Linear(4096, num_bits)
 
     def forward(self, x):
         x = self.features(x)
         x = x.view(x.size(0), 256 * 6 * 6)
         x = self.classifier(x)
-        # x.register_hook(lambda grad: grad.detach())
         x = self.hash_layer(x)  # tanh is removed
         return x
 
